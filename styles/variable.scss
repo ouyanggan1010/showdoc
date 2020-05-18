@@ -1,0 +1,155 @@
+//------------------------------定义颜色
+$colors: (
+    "primary": #eb4450,
+    "white": #fff,
+    "black": #000,
+    "gray-66": #666,
+);
+//$colorKey表示键，$color表示颜色值
+@each $colorKey, $color in $colors {
+    .text-#{$colorKey} {
+        color: $color;
+    }
+    .bg-#{$colorKey} {
+        background-color: $color;
+    }
+}
+//------------------------------text-align 对齐方式
+@each $var in (left, center, right) {
+    .text-#{$var} {
+        text-align: $var;
+    }
+}
+//------------------------------font size
+$base-font-size: 2rpx;
+$font-sizes: (
+    "xs": 10,
+    "sm": 12,
+    "md": 13,
+    "lg": 14,
+    "xl": 16,
+    "xl-18": 18,
+    "xl-20": 20,
+    "xl-22": 22,
+    "xl-24": 24,
+    "xl-26": 26,
+);
+//生成字体大小
+@each $sizeKey, $size in $font-sizes {
+    .fs-#{$sizeKey} {
+        font-size: $size * $base-font-size;
+    }
+}
+//------------------------------flex
+.d-flex {
+    display: flex;
+}
+//默认是水平的，column垂直方向的
+.flex-column {
+    flex-direction: column;
+}
+$flex-jc: (
+    "start": flex-start,
+    "end": flex-end,
+    "center": center,
+    "between": space-between,
+    "around": space-around,
+    "stretch": stretch,
+);
+@each $key, $value in $flex-jc {
+    .jc-#{$key} {
+        justify-content: $value;
+    }
+}
+$flex-ai: (
+    "start": flex-start,
+    "end": flex-end,
+    "center": center,
+    "stretch": stretch,
+);
+@each $key, $value in $flex-ai {
+    .ai-#{$key} {
+        align-items: $value;
+    }
+}
+
+//让所有弹性盒模型对象的子元素都有相同的长度，且忽略它们内部的内容；作用在display:flex的子元素
+.flex-1 {
+    flex: 1;
+}
+
+//flex-grow 属性用于设置或检索弹性盒子的扩展比率
+.flex-grow-1 {
+    flex-grow: 1;
+}
+//------------------------------spacing
+//.mt-1 => margin-top level 1
+$spacing-types: (
+    "m": margin,
+    "p": padding,
+);
+$spacing-directions: (
+    "t": top,
+    "b": bottom,
+    "r": right,
+    "l": left,
+);
+$spacing-base-size: 2rpx;
+$spacing-sizes: (
+    "0": 0,
+    "5": 5,
+    "10": 10,
+    "15": 15,
+    "20": 20,
+    "25": 25,
+    "30": 30,
+);
+@each $typeKey, $type in $spacing-types {
+    //.m-1{margin: 0.25rem}
+    @each $sizeKey, $size in $spacing-sizes {
+        .#{$typeKey}-#{$sizeKey} {
+            #{$type}: $size * $spacing-base-size;
+        }
+    }
+    //.mx-1  .my-1
+    @each $sizeKey, $size in $spacing-sizes {
+        .#{$typeKey}x-#{$sizeKey} {
+            #{$type}-left: $size * $spacing-base-size;
+            #{$type}-right: $size * $spacing-base-size;
+        }
+        .#{$typeKey}y-#{$sizeKey} {
+            #{$type}-top: $size * $spacing-base-size;
+            #{$type}-bottom: $size * $spacing-base-size;
+        }
+    }
+    //.mt-1{margin-top:0.25rem}
+    @each $directionKey, $direction in $spacing-directions {
+        @each $sizeKey, $size in $spacing-sizes {
+            .#{$typeKey}#{$directionKey}-#{$sizeKey} {
+                #{$type}-#{$direction}: $size * $spacing-base-size;
+            }
+        }
+    }
+}
+//------------------------------display
+$displays: (
+    "inline": inline,
+    "inblock": inline-block,
+    "block": block,
+);
+@each $key, $var in $displays {
+    .d-#{$key} {
+        display: $var;
+    }
+}
+//------------------------------float
+$floats: (left, right);
+@each $var in $floats {
+    .f-#{$var} {
+        float: $var;
+    }
+}
+//------------------------------清除浮动
+.clear {
+    clear: both;
+}

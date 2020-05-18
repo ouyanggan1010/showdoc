@@ -1,0 +1,5 @@
+.iconshouhuodizhi{
+    /* 使用主题颜色 */
+    color: var(--themeColor);
+    font-size: 28rpx;
+}
