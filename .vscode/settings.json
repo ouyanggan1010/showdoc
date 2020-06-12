@@ -6,5 +6,13 @@
             "savePath": null
         }
     ],
-    "liveSassCompile.settings.generateMap": false // 去掉map文件
+    "liveSassCompile.settings.generateMap": false,
+    "files.associations": {
+        "*.cjson": "jsonc",
+        "*.wxss": "css",
+        "*.wxs": "javascript",
+        "*.wpy": "vue",
+        "*.scss": "scss",
+        "*.wxml": "html"
+    } // 去掉map文件
 }

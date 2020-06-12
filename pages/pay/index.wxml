@@ -1,2 +1,47 @@
-<!--pages/pay/index.wxml-->
-<text>pages/pay/index.wxml</text>
+<!-- 收货地址 -->
+<view class="revice_address_row">
+    <view class="address_text">
+        <view class="d-flex jc-between mt-20">
+            <view>收货人：{{addressObj.userName}}</view>
+            <view>手机号：{{addressObj.telNumber}}</view>
+        </view>
+        <view class="mt-15">{{addressObj.provinceName+addressObj.cityName+addressObj.countyName+addressObj.detailInfo}}</view>
+    </view>
+</view>
+<view class="revice_line"></view>
+<!-- 要支付的内容 -->
+<view class="cart_content">
+    <view class="cart_title">商品</view>
+    <view class="cart_main">
+        <view class="cart_item" wx:for="{{slectGoods}}" wx:key="goods_id">
+            <navigator class="cart_img_wrap">
+                <image model="scaleToFill" src="{{item.goods_small_logo}}"></image>
+            </navigator>
+            <view class="cart_info_wrap">
+                <view class="goods_name">{{item.goods_name}}</view>
+                <view class="goods_price_wrap">
+                    <view class="goods_price">￥{{item.goods_price}}</view>
+                    <view class="goods_num_tool">
+                        <view class="iconfont iconcheng"></view>
+                        <text>{{item.num}}</text>
+                    </view>
+                </view>
+            </view>
+        </view>
+    </view>
+</view>
+<!-- 底部工具栏 -->
+<view class="btm_tool">
+    <!-- 总价格 -->
+    <view class="total_price_wrap">
+        <view class="total_price">
+            合计：<text class="total_price_text">￥{{totalPrice}}</text>
+        </view>
+        <view class="text-gray-a6">包含运费</view>
+    </view>
+    <!-- 支付 -->
+    <view class="order_pay_wrap" bindtap="handleOrderPay">
+        支付({{totalNum}})
+    </view>
+</view>
+

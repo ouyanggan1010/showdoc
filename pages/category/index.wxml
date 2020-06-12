@@ -1,3 +1,51 @@
-<!--pages/category/index.wxml-->
-<text>pages/category/index.wxml</text>
-<view>jkjkjk</view>
+<view class="cates pt-100">
+	<!-- 搜索组件 -->
+	<searchInput/>
+	<!-- 内容部分 -->
+	<view class="cates_container">
+		<!-- 左侧菜单 -->
+		<scroll-view class="left_menu" scroll-y>
+			<view
+			 class="menu_item {{i===leftMenuIndex?'active':''}}"
+			 wx:for="{{leftMenuList}}"
+			 wx:for-index="i"
+			 wx:for-item="menu"
+			 wx:key="*this"
+			 bindtap="changeActive"
+			 data-index="{{i}}"
+			>
+				<view class="line" hidden="{{i!==leftMenuIndex}}" />
+				<view>{{menu}}</view>
+			</view>
+		</scroll-view>
+		<!-- 右侧商品内容 -->
+		<scroll-view class="right_content" scroll-y scroll-top="{{scrollTop}}">
+			<view
+			 class="goods_group"
+			 wx:for="{{rightContent}}"
+			 wx:for-index="j"
+			 wx:for-item="goods"
+			 wx:key="cat_id"
+			>
+				<view class="goods_title">
+					<text class="text-gray-a6">/</text>
+					<text class="ml-20 mr-20">{{goods.cat_name}}</text>
+					<text class="text-gray-a6">/</text>
+				</view>
+				<view class="goods_list">
+					<navigator
+					 wx:for="{{goods.children}}"
+					 wx:for-index="k"
+					 wx:for-item="good"
+					 wx:key="cat_id"
+					 url="../../pages/goods_list/index?cid={{good.cat_id}}"
+					>
+						<image src="{{good.cat_icon}}" lazy-load mode="widthFix" />
+						<view class="good_name">{{good.cat_name}}</view>
+					</navigator>
+				</view>
+			</view>
+		</scroll-view>
+	</view>
+</view>
+

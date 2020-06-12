@@ -1,0 +1,67 @@
+page {
+    height: 100%;
+}
+.cates {
+    height: 100%;
+    .cates_container {
+        height: calc(100vh - 100rpx);
+        display: flex;
+        // 子元素的高度是与父元素一样100%
+        .left_menu {
+            flex: 2;
+            background: #fafafa;
+            padding-bottom: 50rpx;
+            .menu_item {
+                height: 80rpx;
+                font-size: 30rpx;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                position: relative;
+                .line{
+                    position: absolute;
+                    top: 0;
+                    left: 0;
+                    height: 100%;
+                    background: var(--themeColor);
+                    width: 5rpx;
+                }
+                &.active{
+                    color: var(--themeColor);
+                    background: #fff;
+                    font-weight: bold;
+                }
+            }
+        }
+        .right_content {
+            height: 100%;
+            flex: 5;
+            .goods_group {
+                padding-bottom: 30rpx;
+                width: 100%;
+                .goods_title {
+                    height: 80rpx;
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                    font-size: 30rpx;
+                }
+                .goods_list {
+                    display: flex;
+                    flex-wrap: wrap;
+                    navigator {
+                        margin-top: 20rpx;
+                        width: 33.33%;
+                        text-align: center;
+                        .good_name {
+                            font-size: 28rpx;
+                        }
+                        image {
+                            width: 50%;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

@@ -1,2 +1,40 @@
-<!--pages/goods_list/index.wxml-->
-<text>pages/goods_list/index.wxml</text>
+<view class="pt-100">
+	<SearchInput/>
+	<Tabs tabs="{{tabs}}" active="{{tabsActive}}" showShaw="{{shawBool}}" bindtabChange="handleTabChange">
+		<view class="first_tab">
+			<navigator
+			 class="goods_item"
+			 wx:for="{{goodsList}}"
+			 wx:key="goods_id"
+			 url="../../pages/goods_detail/index?goods_id={{item.goods_id}}"
+			>
+				<!-- 左侧商品图片 -->
+				<view class="goods_img_wrap">
+					<image src="{{item.goods_small_logo?item.goods_small_logo:'../../styles/images/noImg.png'}}" mode="widthFix" />
+				</view>
+				<!-- 右侧商品内容 -->
+				<view class="goods_info_wrap">
+					<view class="goods_name">{{item.goods_name}}</view>
+					<view class="goods_price">￥{{item.goods_price}}</view>
+				</view>
+			</navigator>
+			<!-- 数据加载下一页 -->
+			<view class="goods_loading" wx:if="{{isLoading!==2 && goodsList.length > 0}}">
+				<block wx:if="{{isLoading===0}}">
+					<image src="../../styles/images/loading.gif" mode="widthFix" />
+					<view class="pl-10 text-gray-66 fs-sm">加载中...</view>
+				</block>
+				<block wx:if="{{isLoading===1}}">
+					<view class="iconfont iconnomoredata fs-xl-24 text-black" />
+					<view class="pl-10 text-gray-66 fs-sm">暂无数据</view>
+				</block>
+			</view>
+			<!-- 没有任何数据 -->
+			<view class="goods_noMsg pt-40" wx:if="{{noMsg}}">
+				<view class="iconfont iconnomoredata text-black" />
+				<view class="pl-10 text-gray-66 fs-xl-20">暂无数据</view>
+			</view>
+		</view>
+	</Tabs>
+</view>
+

@@ -21,3 +21,6 @@ page{
   /* 定义统一的字体大小14px 如果设计稿是375px的宽度，750rpx = 375px，则1px = 2rpx */
   font-size: 28rpx;
 }
+image {
+  width: 100%;
+}
