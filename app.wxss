@@ -23,4 +23,5 @@ page{
 }
 image {
   width: 100%;
+  color: red
 }
